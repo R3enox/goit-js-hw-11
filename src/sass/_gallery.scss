@@ -31,6 +31,8 @@ a {
 
 .gallery {
   display: flex;
+  justify-content: center;
+  column-gap: 20px;
   flex-wrap: wrap;
   margin-top: -30px;
   margin-bottom: 20px;
@@ -38,7 +40,6 @@ a {
 
 .photo-card {
   flex-basis: calc((100% - 120px) / 4);
-  margin-left: 20px;
   margin-top: 30px;
   height: 300px;
 }
