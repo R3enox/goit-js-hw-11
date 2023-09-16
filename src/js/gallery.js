@@ -42,9 +42,15 @@ async function onSubmit(evt) {
 
     totalPages = Math.ceil(totalHits / 40);
 
-    Notify.success(`Hooray! We found ${totalHits} images.`);
-    refs.list.innerHTML = galerryCard(hits);
-    lightbox.refresh();
+    if (totalHits === 0) {
+      return Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+    } else {
+      Notify.success(`Hooray! We found ${totalHits} images.`);
+      refs.list.innerHTML = galerryCard(hits);
+      lightbox.refresh();
+    }
 
     if (totalPages === 1) {
       return;
