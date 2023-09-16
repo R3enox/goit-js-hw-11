@@ -69,14 +69,14 @@ async function loadMoreData() {
   const { hits } = await pixabayApi.getPhotos();
 
   try {
+    refs.list.insertAdjacentHTML('beforeend', galerryCard(hits));
+    slowScroll();
+    lightbox.refresh();
     if (pixabayApi.page === totalPages) {
       Notify.info("We're sorry, but you've reached the end of search results.");
       observer.unobserve(refs.guard);
       return;
     }
-    refs.list.insertAdjacentHTML('beforeend', galerryCard(hits));
-    slowScroll();
-    lightbox.refresh();
   } catch {
     Notify.failure(`${error}`);
   }
