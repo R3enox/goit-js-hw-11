@@ -3,6 +3,7 @@ import { refs } from './refs';
 import { PixabayAPI } from './pixabay-api';
 import galerryCard from '../templates/gallery-cards.hbs';
 import { lightbox } from './simpleLightbox';
+import { slowScroll } from './slowScroll';
 
 const pixabayApi = new PixabayAPI(40);
 
@@ -68,6 +69,7 @@ async function loadMoreData() {
       return;
     }
     refs.list.insertAdjacentHTML('beforeend', galerryCard(hits));
+    slowScroll();
     lightbox.refresh();
   } catch {
     Notify.failure(`${error}`);
